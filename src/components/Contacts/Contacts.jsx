@@ -1,26 +1,37 @@
-function Contacts(contacts) {
-  const element = contacts.map(el => <li>{el}</li>);
-  return <ul>{element}</ul>;
-  //   function Statistics({ title, stats }) {
-  //   const element = stats.map(({ id, label, percentage }) => (
-  //     <li
-  //       key={id}
-  //       className={styles.item}
-  //       style={{
-  //         backgroundColor: getRandomHexColor(),
-  //       }}
-  //     >
-  //       <span className={styles.label}>{label}</span>
-  //       <span className={styles.percentage}>{percentage}</span>
-  //     </li>
-  //   ));
-  //   return (
-  //     <section className={styles.statistics}>
-  //       {title && <h2 className={styles.title}>{title}</h2>}
-  //       <ul className={styles.statList}>{element}</ul>
-  //     </section>
-  //   );
-  // }
+import PropTypes from 'prop-types';
+import style from './Contacts.module.css';
+
+function Contacts({ filterName, onClick }) {
+  return (
+    <ul>
+      {filterName.map(({ name, number, id }) => {
+        return (
+          <li className={style.item} key={id}>
+            <span>{name}: </span>
+            <span>{number}</span>
+            <button
+              onClick={() => onClick(id)}
+              className={style.button_delete}
+              type="button"
+            >
+              X
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
 
 export default Contacts;
+
+Contacts.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  filterName: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+};
