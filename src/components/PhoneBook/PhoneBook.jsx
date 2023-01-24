@@ -18,6 +18,7 @@ class PhoneBook extends Component {
   addContacts = ({ name, number }) => {
     if (this.findDublicate(name, number)) {
       alert(`${name} is already in contacts`);
+      return;
     }
     const { contacts } = this.state;
     this.setState({

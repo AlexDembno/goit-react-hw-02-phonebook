@@ -8,7 +8,6 @@ function FilterContacts({ onChange }) {
       <input
         className={style.input}
         type="text"
-        // value={this.state.text}
         placeholder="Find name"
         onChange={onChange}
       />
