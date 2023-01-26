@@ -1,21 +1,19 @@
+import ContactElement from 'components/ContactElement/ContactElement';
 import PropTypes from 'prop-types';
+
 import style from './Contacts.module.css';
 
 function Contacts({ filterName, onClick }) {
   return (
     <ul>
-      {filterName.map(({ name, number, id }) => {
+      {filterName.map(({ id, name, number }) => {
         return (
-          <li className={style.item} key={id}>
-            <span>{name}: </span>
-            <span>{number}</span>
-            <button
+          <li key={id} className={style.item}>
+            <ContactElement
+              name={name}
+              number={number}
               onClick={() => onClick(id)}
-              className={style.button_delete}
-              type="button"
-            >
-              X
-            </button>
+            />
           </li>
         );
       })}

@@ -45,6 +45,8 @@ class FormAddContacts extends Component {
             placeholder="Enter name"
             onChange={this.handleChangeInput}
           />
+        </label>
+        <label name="number">
           <input
             className={style.input}
             type="tel"

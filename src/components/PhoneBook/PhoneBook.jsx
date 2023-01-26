@@ -7,17 +7,15 @@ import style from './PhoneBook.module.css';
 import { nanoid } from 'nanoid';
 
 class PhoneBook extends Component {
-  static propTypes = {};
   state = {
     contacts: [...contacts],
     filter: '',
   };
 
-  loginInputId = nanoid();
-
   addContacts = ({ name, number }) => {
     if (this.findDublicate(name, number)) {
       alert(`${name} is already in contacts`);
+
       return;
     }
     const { contacts } = this.state;
